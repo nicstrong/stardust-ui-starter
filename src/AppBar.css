@@ -1,0 +1,38 @@
+.cq::before {
+    height: calc(96%) !important;
+    width: 0.4rem !important;
+    background-color: #e2e2f6 !important;;
+}
+
+.cr::before {
+    top: 0.06rem !important;
+}
+
+li.cm {
+    border-width: 0 !important;
+}
+li.cl {
+    border-width: 0 !important;
+}
+li.ck {
+    border-width: 0 !important;
+}
+li.cj {
+    border-width: 0 !important;
+}
+li.bb {
+    border-style: none !important;
+}
+li.ba {
+    border-style: none !important;
+}
+li.az {
+    border-style: none !important;
+}
+li.ay {
+    border-style: none !important;
+}
+
+a.cu {
+    background-color: #464775 !important;;
+}
