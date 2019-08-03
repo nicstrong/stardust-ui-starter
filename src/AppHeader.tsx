@@ -9,7 +9,7 @@ interface AppHeaderProps {
 const AppHeader: React.FC<AppHeaderProps> = (props) => {
     return <Flex vAlign='center'
         styles={{ ...props.styles, ...{ padding: '0 2rem', backgroundColor: props.backgroundColor, height: '48px' } }} >
-        <Header as='h3' content='Stardust-UI Starter' color='white' />
+        <Header as='h3' content='Stardust UI Starter' color='white' />
     </Flex>
 
 }
