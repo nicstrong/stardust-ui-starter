@@ -1,4 +1,4 @@
-import { ColorScheme, ComponentSlotStyle, Flex, Icon, Menu, SegmentProps, Text, ToolbarMenuItemShorthandKinds } from "@stardust-ui/react";
+import { ColorScheme, ComponentSlotStyle, Flex, Icon, Menu, ProviderConsumer, SegmentProps, Text, ToolbarMenuItemShorthandKinds } from "@stardust-ui/react";
 import React from 'react';
 import { IconType } from 'react-icons/lib/cjs';
 import { MdAddToQueue, MdHome, MdInsertChart, MdNetworkCheck, MdReport } from "react-icons/md";
@@ -9,7 +9,6 @@ export type KeyType = 'rooms' | 'software' | 'escalations' | 'metrics' | 'health
 
 interface AppBarProps {
     styles?: ComponentSlotStyle<SegmentProps, any>;
-    colorScheme: ColorScheme
 }
 
 const items = [
@@ -22,24 +21,26 @@ const items = [
 ]
 
 const AppBar: React.FC<AppBarProps> = (props) => {
-    return (<Flex
-        styles={{
-            ...props.styles, ...{
-                backgroundColor: props.colorScheme.background2,
-                padding: '0', borderWidth: '0', borderStyle: 'none'
-            }
-        }}
-    >
-        <Menu
-            defaultActiveIndex={0}
-            vertical
-            iconOnly
-            pointing
-            styles={{ ...props.styles, ...{ backgroundColor: props.colorScheme.background2, paddingTop: '0' } }}
-            items={items.map(item => createItem(item, props.colorScheme))}
-        />
-    </Flex >)
-
+    return <ProviderConsumer
+        render={({siteVariables}) => {
+            return <Flex
+                styles={{
+                    ...props.styles, ...{
+                        backgroundColor: siteVariables.colors.brand[900],
+                        padding: '0', borderWidth: '0', borderStyle: 'none'
+                    }
+                }}
+            >
+                <Menu
+                    defaultActiveIndex={0}
+                    vertical
+                    iconOnly
+                    pointing
+                    styles={{ ...props.styles, ...{ backgroundColor: siteVariables.colors.brand[900], paddingTop: '0' } }}
+                    items={items.map(item => createItem(item, siteVariables.colorScheme.brand))}
+                />
+            </Flex >
+        }} />
 }
 
 interface ItemType {

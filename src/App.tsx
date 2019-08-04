@@ -4,16 +4,18 @@ import { Redirect, Route, RouteComponentProps, Switch, withRouter } from 'react-
 import './App.css';
 import AppBar from './AppBar';
 import AppHeader from './AppHeader';
+import Rooms from './components/Rooms';
 
 const App: React.FC<RouteComponentProps> = (props) => {
   return (
     <ProviderConsumer render={(theme) => {
+      console.log('theme.siteVariables.colors.brand[600]', theme.siteVariables.colors.brand[600])
       return <Flex column>
-        <AppHeader backgroundColor={theme.siteVariables.colorScheme.brand.background4} />
+        <AppHeader />
         <Flex fill styles={{ height: 'calc(100vh - 48px)' }}>
-          <AppBar colorScheme={theme.siteVariables.colorScheme.brand} />
+          <AppBar />
           <Switch>
-            <Route path='/rooms' component={Rooms} />
+            <Route path='/rooms' render={() => <Rooms /> } />
             <Route path='/software' component={Software} />
             <Route path='/escalations' component={Escalations} />
             <Route path='/health' component={Health} />
@@ -27,9 +29,7 @@ const App: React.FC<RouteComponentProps> = (props) => {
 }
 
 
-const Rooms: React.FC<{}> = (props) => {
-  return <Header as='h3' color='brand' content='Room' description='A test page' />
-}
+
 const Software: React.FC<{}> = (props) => {
   return <Header as='h3' color='brand' content='Software' description='A test page' />
 }
