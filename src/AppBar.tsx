@@ -24,20 +24,25 @@ const AppBar: React.FC<AppBarProps> = (props) => {
     return <ProviderConsumer
         render={({siteVariables}) => {
             return <Flex
+                className='appbar'
                 styles={{
                     ...props.styles, ...{
                         backgroundColor: siteVariables.colors.brand[900],
-                        padding: '0', borderWidth: '0', borderStyle: 'none'
                     }
                 }}
             >
                 <Menu
                     defaultActiveIndex={0}
                     vertical
-                    iconOnly
                     pointing
-                    styles={{ ...props.styles, ...{ backgroundColor: siteVariables.colors.brand[900], paddingTop: '0' } }}
+                    fluid
                     items={items.map(item => createItem(item, siteVariables.colorScheme.brand))}
+                    variables={{ 
+                        verticalBackgroundColor: siteVariables.colors.brand[900],
+                        backgroundColorActive: siteVariables.colors.brand[800],
+                        backgroundColorHover: siteVariables.colors.brand[800],
+                        pointingIndicatorBackgroundColor: siteVariables.colors.brand[200]
+                    }}
                 />
             </Flex >
         }} />
@@ -64,20 +69,21 @@ function createItem(item: ItemType, colorScheme: ColorScheme) {
                 : <AppBarMenuItem element={item.iconElement!} title={item.title!} />
         ),
         styles: {
-            ':hover': { background: colorScheme!.backgroundHover },
+            // ':hover': { background: colorScheme!.backgroundHover },
             // done in css :(
             // '::before': { 
             //     width: '0.28rem',
             //     backgroundColor: colorScheme.borderActive1,
             // }
         },
-        variables: { backgroundActive: colorScheme!.backgroundHover, backgroundHover: colorScheme!.backgroundHover }
+        //variables: { backgroundColorHover: colorScheme!.backgroundHover, backgroundHover: colorScheme!.backgroundHover }
     }
 }
 
 const AppBarMenuItem: React.FC<{ name?: string, title: string, element?: IconType }> = ({ name, title, element }) => {
-    return <Flex column vAlign='center' hAlign="center" styles={{ minWidth: '3rem', minHeight: '3rem' }}>
-        {name ? <Icon name={name} size='medium' xSpacing='none' color='white' /> : element!({ color: 'white', size: '20' })}
+    // styles={{ minWidth: '3rem', minHeight: '3rem' }}>
+    return <Flex column vAlign='center' hAlign="center" > 
+        {name ? <Icon name={name} size='medium' xSpacing='none' color='white' /> : element!({ color: 'white', size: '24' })}
         <Text content={title} color='white' size='smaller' weight='light' styles={{ marginTop: '0.3rem' }} />
     </Flex>
 }

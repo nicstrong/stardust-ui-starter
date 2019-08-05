@@ -6,6 +6,8 @@ import App from './App';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 
+console.log(`${process.env.REACT_APP_NAME} ${process.env.REACT_APP_VERSION}`)
+
 ReactDOM.render(
     <BrowserRouter>
         <Provider theme={themes.teams}>
