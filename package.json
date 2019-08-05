@@ -10,12 +10,14 @@
     "@types/react-dom": "^16.8.5",
     "@types/react-icons": "^3.0.0",
     "@types/react-router-dom": "^4.3.4",
+    "@types/url-template": "^2.0.28",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-icon": "^1.0.0",
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.0.1",
-    "typescript": "^3.5.3"
+    "typescript": "^3.5.3",
+    "url-template": "^2.0.8"
   },
   "scripts": {
     "start": "react-scripts start",

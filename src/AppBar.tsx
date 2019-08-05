@@ -1,4 +1,4 @@
-import { ColorScheme, ComponentSlotStyle, Flex, Icon, Menu, ProviderConsumer, SegmentProps, Text, ToolbarMenuItemShorthandKinds } from "@stardust-ui/react";
+import { ComponentSlotStyle, Flex, Icon, Menu, ProviderConsumer, SegmentProps, Text, ToolbarMenuItemShorthandKinds } from "@stardust-ui/react";
 import React from 'react';
 import { IconType } from 'react-icons/lib/cjs';
 import { MdAddToQueue, MdHome, MdInsertChart, MdNetworkCheck, MdReport } from "react-icons/md";
@@ -36,7 +36,7 @@ const AppBar: React.FC<AppBarProps> = (props) => {
                     vertical
                     pointing
                     fluid
-                    items={items.map(item => createItem(item, siteVariables.colorScheme.brand))}
+                    items={items.map(item => createItem(item))}
                     variables={{ 
                         verticalBackgroundColor: siteVariables.colors.brand[900],
                         backgroundColorActive: siteVariables.colors.brand[800],
@@ -55,7 +55,7 @@ interface ItemType {
     title?: string
 }
 
-function createItem(item: ItemType, colorScheme: ColorScheme) {
+function createItem(item: ItemType) {
     return {
         key: item.key,
         id: item.key,
@@ -68,20 +68,10 @@ function createItem(item: ItemType, colorScheme: ColorScheme) {
                 ? <AppBarMenuItem name={item.iconName!} title={item.title!} />
                 : <AppBarMenuItem element={item.iconElement!} title={item.title!} />
         ),
-        styles: {
-            // ':hover': { background: colorScheme!.backgroundHover },
-            // done in css :(
-            // '::before': { 
-            //     width: '0.28rem',
-            //     backgroundColor: colorScheme.borderActive1,
-            // }
-        },
-        //variables: { backgroundColorHover: colorScheme!.backgroundHover, backgroundHover: colorScheme!.backgroundHover }
     }
 }
 
 const AppBarMenuItem: React.FC<{ name?: string, title: string, element?: IconType }> = ({ name, title, element }) => {
-    // styles={{ minWidth: '3rem', minHeight: '3rem' }}>
     return <Flex column vAlign='center' hAlign="center" > 
         {name ? <Icon name={name} size='medium' xSpacing='none' color='white' /> : element!({ color: 'white', size: '24' })}
         <Text content={title} color='white' size='smaller' weight='light' styles={{ marginTop: '0.3rem' }} />

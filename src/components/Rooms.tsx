@@ -9,7 +9,7 @@ interface Props {
 const Rooms: React.FC<Props> = (props) => {
     return <ContentPage 
         title='Rooms'>
-            <Text content='Some text about the rooms'/>
+            <Text content='Hello World!'/>
         </ContentPage>
 }
 
